@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Coding-Basics</title>
+  <style>
+    body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    }
+    div.container {
+      text-align: center;
+    }
+    
+    ol.myUL {
+      display: inline-block;
+      text-align: center;
+    }
+    </style>
+ 
+</head>
+<body>
+  <h2>Was brauche ich zum Coden?</h2>
+  <hr>
+  <p>Kleine Auflistung von Dingen, die man zum Programmieren braucht:</p>
+  <div class="container">
+    <ol class="myUL" type="a" start="4">
+      <li>Zeit</li>
+      <li>gutes Nervenkostüm</li>
+      <li>Verstand</li>
+      <li>Passende Programme</li>
+    </ol>
+  
+  </div>
+  <pre>
+    <h3>Beispiel eines Programmcodes an Hand von CHATTY aus der Linux-Bash:</h3>
+
+    <code>
+#!/bin/bash
+
+log=chatty-$(date -I).log
+
+if [ -n $1 ]
+then
+    cname="$1"
+else
+    cname="Chatty"
+fi
+
+cecho() {
+    echo "$1"
+    echo "Chatty: $1" >> $log
+}
+
+cread() {
+    read tmp
+    echo "${NAME:-${tmp}}: ${tmp}" >> $log
+    echo "$tmp"
+}
+
+let x=20
+let y=50
+
+cecho " Hallo, ich bin Chatty. Wie heißt du?"
+NAME=$(cread)
+
+cecho " Hallo $NAME, freut mich. Und wie alt bist du?"
+AGE=$(cread)
+
+if [ $AGE -le $x ]; then
+cecho   " Du bist unter 20 Jahren alt."
+elif [ $AGE -ge $y ]; then
+cecho   " Du bist über 50 Jahre alt!"
+else
+cecho   " Du bist zwischen 20 und 50 Jahren alt."
+
+fi
+
+cecho   " Und wo wohnst du?"
+city=$(cread)
+cecho   " $city ist ein schöner Ort!"
+
+cecho   " Welche Filme magst du so?"
+movie=$(cread)
+if [ $movie = Liebesfilme ]; then
+cecho   " Ab und an muss es mal Romantik sein."
+elif [ $movie = Actionfilme ]; then
+cecho   " Nur fette Explosionen sind das einzig wahre!"
+elif [ $movie = Marvelfilme ]; then
+cecho   " Die sind ja auch besser als das DCEU!"
+elif [ $movie = Disneyfilme ]; then
+cecho   " Manchmal muss das Kind in einem auch mal raus!"
+else
+cecho   " Solange du dich gut unterhalten fühlst bin ich zufrieden."
+
+fi
+
+cecho   " Darf ich dich noch weitere Dinge fragen oder möchtest du beenden? Ja für Beenden, Nein für weitere Fragen."
+answer=$(cread)
+if [ $answer = Ja ]; then
+cecho   " Das ist schade. Mach es gut $NAME, und hab noch n tollen Tag!"
+exit 1
+
+fi
+
+cecho   " Es freut mich, dass ich noch weitere Zeit mit dir verbringen darf."
+cecho   " Spielst du gerne Computerspiele? (Ja/Nein)"
+game=$(cread)
+if [ $game = Ja ]; then
+cecho   " Und was ist dein Lieblingsspiel?"
+game1=$(cread)
+cecho   " $game1? Das klingt interessant, das schaue ich mir mal näher an."
+else 
+cecho   " Das ist schade, aber nicht weiter schlimm."
+
+fi
+
+cecho   " Und welche Jahreszeit magst du am liebsten?"
+season=$(cread)
+cecho   " Den $season? Interessant. Ich mag den Frühling am liebsten, da ist es weder zu warm noch zu kalt und die Natur erwacht zu neuem Leben."
+
+cecho   " Was ist deine Lieblingsfarbe?"
+color1=$(cread)
+cecho   " Das ist schön. Möchtest du meine Lieblingsfarbe wissen? (Ja/Nein)"
+decision=$(cread)
+if [ $decision = Ja ]; then
+cecho   " Meine Lieblingsfarbe ist grün."
+else 
+cecho   " Das ist auch okay."
+fi
+
+if [ $decision = Ja -a $color1 = Grün ]; then
+cecho   " Du hast die selbe Lieblingsfarbe wie ich, das ist sehr sympathisch! :) "
+fi
+
+cecho " Geht es dir gerade gut? (Gut/Schlecht)"
+Gefuehl=$(cread)
+if [ $Gefuehl = Gut ]; then
+cecho "Das freut mich zu lesen!"
+else
+cecho " Das tut mir leid, ruh dich aus und erhole dich!"
+fi
+cecho ""
+cecho " Danke für das schöne Gespräch, hier sind nochmal alle Antworten von dir:"
+cecho ""
+cecho " Dein Name ist $NAME.
+ Du bist $AGE Jahre alt.
+ Du wohnst in $city.
+ Deine Lieblingsfilme sind $movie.
+ Am liebsten spielst du $game1.
+ Von den 4 Jahreszeiten ist dir der $season am liebsten.
+ Und dir geht es heute $Gefuehl.
+
+Machs gut $NAME und vielleicht bis bald!"
+    </code>
+  </pre>
+</body>
+</html>

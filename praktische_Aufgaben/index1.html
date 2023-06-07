@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Andis Weiterleitungs-Service</title>
+  <meta name="author" content="<Author-Name>">
+  <meta name="keywords" content="<Keywords>">
+  <meta http-equiv="refresh" content="10; URL=https://github.com/AndiBruehl?tab=repositories">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    #content {
+      text-align: center;
+      color: rgb(0, 0, 0);
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <p>Du wirst gleich auf meine repositories weitergeleitet. Viel Spaß!</p>
+    <br>
+    <h2 id="timer"></h2>
+  </div>
+  
+  <script>
+    var timeLeft = 10;
+    var elem = document.getElementById('timer');
+    
+    var timerId = setInterval(countdown, 1000);
+    
+    function countdown() {
+      if (timeLeft == -1) {
+        clearTimeout(timerId);
+        doSomething();
+      } else {
+        elem.innerHTML = 'Weiterleitung in ' + timeLeft;
+        timeLeft--;
+      }
+    }
+    
+    function doSomething() {
+      window.location.href = "https://github.com/AndiBruehl?tab=repositories";
+    }
+  </script>
+</body>
+</html>
